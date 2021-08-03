@@ -8,7 +8,7 @@ on:
     paths-ignore:
       - 'LICENSE'
       - 'README.md'
-      - '.github/*'
+      - '.github/**'
 jobs:
     build:
       runs-on: windows-latest

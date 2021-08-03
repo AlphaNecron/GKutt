@@ -33,7 +33,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Short URL" DisplayMemberBinding="{Binding ShortUrl}">
+                        <GridViewColumn Header="Short URL">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate DataType="kl:Link">
                                     <ui:SimpleStackPanel Orientation="Horizontal" Spacing="4">
@@ -46,7 +46,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}">
+                        <GridViewColumn Header="Description">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate DataType="kl:Link">
                                     <ui:SimpleStackPanel Orientation="Horizontal" Spacing="4">

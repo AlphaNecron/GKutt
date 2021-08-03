@@ -19,6 +19,7 @@
                        IsBackEnabled="False"
                        PaneDisplayMode="Top">
         <ui:NavigationView.Resources>
+            <ImageBrush x:Key="NavigationViewTopPaneBackground" Stretch="UniformToFill" ImageSource="pack://application:,,,/Static/ribbon.png"/>
         </ui:NavigationView.Resources>
         <ui:NavigationView.MenuItems>
             <ui:NavigationViewItem IsSelected="True" FontWeight="Medium" Icon="Add" Content="Shorten an URL"

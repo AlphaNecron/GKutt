@@ -71,7 +71,7 @@ namespace GKutt
         {
             try
             {
-                return Uri.IsWellFormedUriString(new Uri(value!.ToString()).ToString(), UriKind.Absolute);
+                return Uri.IsWellFormedUriString(new UriBuilder(value!.ToString()).Uri.ToString(), UriKind.Absolute);
             }
             catch
             {

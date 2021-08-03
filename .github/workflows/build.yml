@@ -13,12 +13,15 @@ jobs:
     build:
       runs-on: windows-latest
       steps:
-        - uses: actions/checkout@v2
+        - name: Checkout
+          uses: actions/checkout@v2
           with:
            fetch-depth: 0
-        - uses: microsoft/setup-msbuild@v1.0.2
-        - run: msbuild GKutt.csproj /t:Restore;Build /p:Configuration=Release
-        - uses: ncipollo/release-action@v1.8.6
+        - name: Setup MSBuild
+          uses: microsoft/setup-msbuild@v1.0.2
+        - run: msbuild GKutt.csproj /t:Restore,Build /p:Configuration=Release
+        - name: Create release
+          uses: ncipollo/release-action@v1.8.6
           with:
             artifacts: "bin/Release/GKutt.exe"
             token: ${{ secrets.GITHUB_TOKEN }}

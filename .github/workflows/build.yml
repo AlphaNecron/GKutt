@@ -1,6 +1,6 @@
 name: Build project
 on:
-  push:
+  create:
     tags:
       - 'v*'
 jobs:

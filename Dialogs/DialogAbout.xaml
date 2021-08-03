@@ -15,7 +15,6 @@
         <Image Width="Auto" Height="125" Source="pack://application:,,,/Static/banner.png" />
         <TextBlock Text="{Binding AppVersion}" FontSize="18" FontWeight="500" />
         <ui:SimpleStackPanel Orientation="Horizontal" Spacing="2" VerticalAlignment="Bottom" Margin="8"
-                             HorizontalAlignment="Center">
-        </ui:SimpleStackPanel>
+                             HorizontalAlignment="Center" />
     </ui:SimpleStackPanel>
 </ui:ContentDialog>

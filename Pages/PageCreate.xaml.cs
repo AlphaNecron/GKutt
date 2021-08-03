@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Input;
 using Kutt.NET;
 using MessageBox = ModernWpf.MessageBox;
 

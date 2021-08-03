@@ -16,16 +16,21 @@
             <Expander Margin="0,4" Header="Advanced options">
                 <WrapPanel Margin="4">
                     <ComboBox ui:ControlHelper.Header="Domain" x:Name="DomainSelector" SelectedIndex="0"
-                              ItemsSource="{Binding Domains}" Margin="2,4"/>
+                              ItemsSource="{Binding Domains}" Margin="2,4" />
                     <TextBox ui:ControlHelper.Header="Slug" VerticalAlignment="Top" x:Name="TbSlug"
                              ui:ControlHelper.PlaceholderText="Leave blank for random" Margin="2,4" />
                     <PasswordBox ui:ControlHelper.Header="Password" Width="150" x:Name="TbPassword"
                                  VerticalAlignment="Top" Margin="2,4" />
-                            <StackPanel Margin="2,-3,2,4">
-                                <CheckBox Margin="0,0,0,-2" Content="Expiration (in minute)" IsChecked="{Binding ElementName=TbExpiration, Path=IsEnabled, Mode=TwoWay}"/>
-                                <ui:NumberBox SpinButtonPlacementMode="Inline" IsEnabled="False" ui:TextBoxHelper.IsDeleteButtonVisible="False" Value="1" ui:TextBoxHelper.IsDeleteButton="False" Minimum="1" AcceptsExpression="False" x:Name="TbExpiration"/>
-                            </StackPanel>
-                            <TextBox Margin="2,4" ui:ControlHelper.Header="Description" x:Name="TbDesc" VerticalAlignment="Top" Width="225" />
+                    <StackPanel Margin="2,-3,2,4">
+                        <CheckBox Margin="0,0,0,-2" Content="Expiration (in minute)"
+                                  IsChecked="{Binding ElementName=TbExpiration, Path=IsEnabled, Mode=TwoWay}" />
+                        <ui:NumberBox SpinButtonPlacementMode="Inline" IsEnabled="False"
+                                      ui:TextBoxHelper.IsDeleteButtonVisible="False" Value="1"
+                                      ui:TextBoxHelper.IsDeleteButton="False" Minimum="1" AcceptsExpression="False"
+                                      x:Name="TbExpiration" />
+                    </StackPanel>
+                    <TextBox Margin="2,4" ui:ControlHelper.Header="Description" x:Name="TbDesc" VerticalAlignment="Top"
+                             Width="225" />
                 </WrapPanel>
             </Expander>
         </StackPanel>

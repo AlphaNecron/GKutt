@@ -29,10 +29,7 @@ namespace GKutt.Pages
 
         private bool LinkFilter(object item)
         {
-            if (string.IsNullOrEmpty(SbQuery.Text))
-            {
-                return true;
-            }
+            if (string.IsNullOrEmpty(SbQuery.Text)) return true;
 
             var link = item as Link;
             return link.LongUrl.IndexOf(SbQuery.Text, StringComparison.OrdinalIgnoreCase) >= 0

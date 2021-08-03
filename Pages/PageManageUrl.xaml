@@ -1,0 +1,80 @@
+﻿<ui:Page x:Class="GKutt.Pages.PageManageUrl"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:local="clr-namespace:GKutt"
+         xmlns:ui="http://schemas.modernwpf.com/2019"
+         xmlns:kl="clr-namespace:Kutt.NET.Links;assembly=Kutt.NET"
+         xmlns:controls="clr-namespace:GKutt.Controls"
+         DataContext="{Binding RelativeSource={RelativeSource Self}}"
+         mc:Ignorable="d"
+         Loaded="Refresh"
+         Title="PageManageUrl">
+    <Grid>
+        <controls:LoadingOverlay x:Name="Overlay"
+                                 Width="Auto" Grid.ZIndex="100" Height="Auto" />
+        <DockPanel LastChildFill="True">
+            <ui:AutoSuggestBox Margin="8,4" TextChanged="QueryChanged" DockPanel.Dock="Top" x:Name="SbQuery"
+                               ItemsSource="{Binding Queries}" />
+            <ListView x:Name="LvLinks" DockPanel.Dock="Bottom" ItemsSource="{Binding Links}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Target">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate DataType="kl:Link">
+                                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="4">
+                                        <TextBlock Text="{Binding LongUrl}" />
+                                        <Button Width="28" Height="24" Tag="{Binding LongUrl}" Click="CopyToClipboard"
+                                                Background="Transparent">
+                                            <ui:FontIcon Glyph="&#xF0E3;" FontSize="11" />
+                                        </Button>
+                                    </ui:SimpleStackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Short URL" DisplayMemberBinding="{Binding ShortUrl}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate DataType="kl:Link">
+                                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="4">
+                                        <TextBlock Text="{Binding ShortUrl}" />
+                                        <Button Width="28" Height="24" Tag="{Binding ShortUrl}" Click="CopyToClipboard"
+                                                Background="Transparent">
+                                            <ui:FontIcon Glyph="&#xF0E3;" FontSize="11" />
+                                        </Button>
+                                    </ui:SimpleStackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate DataType="kl:Link">
+                                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="4">
+                                        <TextBlock Text="{Binding Description}" />
+                                        <Button Width="28" Height="24" Tag="{Binding Description}"
+                                                Click="CopyToClipboard" Background="Transparent">
+                                            <ui:FontIcon Glyph="&#xF0E3;" FontSize="11" />
+                                        </Button>
+                                    </ui:SimpleStackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Created at" DisplayMemberBinding="{Binding CreatedAt}" />
+                        <GridViewColumn Header="Updated at" DisplayMemberBinding="{Binding UpdatedAt}" />
+                        <GridViewColumn Header="Banned"
+                                        DisplayMemberBinding="{Binding IsBanned, Converter={x:Static local:BooleanToYesNo.Instance}}" />
+                        <GridViewColumn Header="Clicks" DisplayMemberBinding="{Binding Clicks}" />
+                        <GridViewColumn Header="Actions">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate DataType="kl:Link">
+                                    <controls:LinkActions ActionClicked="HandleActions" Uuid="{Binding Uuid}"
+                                                          ShortUrl="{Binding ShortUrl}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</ui:Page>

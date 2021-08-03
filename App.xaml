@@ -1,0 +1,22 @@
+﻿<Application x:Class="GKutt.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.modernwpf.com/2019"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+                    <ImageBrush ImageSource="pack://application:,,,/Static/background.jpg" x:Key="BackgroundImage"
+                                Stretch="UniformToFill" />
+                    <Style TargetType="ui:FontIcon">
+                        <Setter Property="FontFamily" Value="pack://application:,,,/Static/#Segoe MDL2 Assets" />
+                    </Style>
+                </ResourceDictionary>
+                <ui:ThemeResources RequestedTheme="Dark" AccentColor="#5865F2" />
+                <ui:XamlControlsResources />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

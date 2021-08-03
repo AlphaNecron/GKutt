@@ -1,0 +1,15 @@
+﻿<ui:ContentDialog x:Class="GKutt.Dialogs.DialogSettings"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:ui="http://schemas.modernwpf.com/2019"
+                  mc:Ignorable="d"
+                  Title="Settings">
+    <Grid>
+        <PasswordBox x:Name="BoxApiKey" PasswordChar="#" VerticalAlignment="Top"
+                     ui:PasswordBoxHelper.PasswordRevealMode="Peek" ui:ControlHelper.Header="API key" />
+        <Button Style="{StaticResource AccentButtonStyle}" Content="Save" Click="Save" HorizontalAlignment="Right"
+                VerticalAlignment="Bottom" />
+    </Grid>
+</ui:ContentDialog>

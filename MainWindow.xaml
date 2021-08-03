@@ -1,0 +1,55 @@
+﻿<Window x:Class="GKutt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GKutt"
+        Loaded="OnLoad"
+        ui:TitleBar.ExtendViewIntoTitleBar="True"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        MinWidth="475" MinHeight="350"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        xmlns:pages="clr-namespace:GKutt.Pages"
+        xmlns:dialogs="clr-namespace:GKutt.Dialogs"
+        mc:Ignorable="d"
+        Icon="pack://application:,,,/Static/kutt.png"
+        Title="GKutt" Height="450" Width="700">
+    <ui:NavigationView IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navigate"
+                       IsBackEnabled="False"
+                       PaneDisplayMode="Top">
+        <ui:NavigationView.Resources>
+            <ImageBrush x:Key="NavigationViewTopPaneBackground" Stretch="UniformToFill" ImageSource="pack://application:,,,/Static/ribbon.png"/>
+        </ui:NavigationView.Resources>
+        <ui:NavigationView.MenuItems>
+            <ui:NavigationViewItem IsSelected="True" FontWeight="Medium" Icon="Add" Content="Shorten an URL"
+                                   Tag="{x:Type pages:PageCreate}" />
+            <ui:NavigationViewItem Content="Manage URLs" Icon="AllApps" FontWeight="Medium"
+                                   Tag="{x:Type pages:PageManageUrl}" />
+        </ui:NavigationView.MenuItems>
+        <ui:NavigationView.PaneFooter>
+            <StackPanel Orientation="Horizontal" Margin="2,0" Button.Click="OpenDialog">
+                <Rectangle Width="24" Height="24" RadiusX="24" RadiusY="24">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="{Binding Email, Converter={x:Static local:EmailToGravatar.Instance}}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+                <ui:AppBarSeparator Margin="-8,0" Foreground="White" />
+                <Button Background="Transparent"
+                        Visibility="{Binding SourcePageType, ElementName=RootFrame, 
+                Converter={x:Static local:PageTypeMatcher.Instance}, 
+                ConverterParameter={x:Type pages:PageManageUrl}}"
+                        Click="RefreshList" ToolTip="Refresh list">
+                    <ui:FontIcon Glyph="&#xE72C;" />
+                </Button>
+                <Button Background="Transparent" ToolTip="About GKutt" Tag="{x:Type dialogs:DialogAbout}">
+                    <ui:FontIcon Glyph="&#xE946;" />
+                </Button>
+                <Button Background="Transparent" ToolTip="Settings" Tag="{x:Type dialogs:DialogSettings}">
+                    <ui:FontIcon Glyph="&#xE713;" />
+                </Button>
+            </StackPanel>
+        </ui:NavigationView.PaneFooter>
+        <ui:Frame x:Name="RootFrame" Source="Pages/PageCreate.xaml" Background="{StaticResource BackgroundImage}" />
+    </ui:NavigationView>
+</Window>

@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="GKutt.Controls.LinkActions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="http://schemas.modernwpf.com/2019"
+             mc:Ignorable="d">
+    <ui:SimpleStackPanel Orientation="Horizontal" Margin="4,0,0,0" Spacing="2">
+        <Button ToolTip="Delete" Click="DeleteLink" ui:ControlHelper.CornerRadius="2">
+            <ui:FontIcon Glyph="&#xE74D;" />
+        </Button>
+        <Button ToolTip="Show QR code" Click="ShowQrCode" ui:ControlHelper.CornerRadius="2">
+            <ui:FontIcon Glyph="&#xED14;" />
+        </Button>
+        <!--<Button ToolTip="Edit" Click="EditLink" ui:ControlHelper.CornerRadius="2">
+            <ui:FontIcon Glyph="&#xE70F;"/>
+        </Button>-->
+        <ui:SimpleStackPanel.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <Style TargetType="ui:FontIcon">
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+        </ui:SimpleStackPanel.Resources>
+    </ui:SimpleStackPanel>
+</UserControl>

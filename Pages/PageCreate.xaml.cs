@@ -38,6 +38,7 @@ namespace GKutt.Pages
                 var desc = TbDesc.Text;
                 var minutes = TbExpiration.IsEnabled ? (int) Math.Ceiling(TbExpiration.Value) + "m" : "";
                 var link = await App.Kutt.CreateLinkAsync(target, domain, desc, minutes, slug, password: password);
+                MessageBox.Show("Copied the shortened link to your clipboard!");
                 Clipboard.SetText(link.ShortUrl);
             }
             catch (KuttException kex)

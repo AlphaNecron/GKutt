@@ -14,7 +14,7 @@ namespace GKutt
     public partial class App
     {
         internal static string ApiKey = "";
-        internal static KuttApi Kutt = new(ApiKey);
+        internal static KuttApi Kutt;
 
         private static readonly string ConfigFile =
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "gkutt.conf");

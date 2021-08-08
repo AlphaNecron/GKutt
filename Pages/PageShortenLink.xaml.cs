@@ -14,8 +14,6 @@ namespace GKutt.Pages
             InitializeComponent();
         }
 
-        private KuttApi ApiInstance { get; set; }
-
         public ObservableCollection<string> Domains { get; } = new();
 
         private async void OnLoad(object sender, RoutedEventArgs e)
@@ -43,7 +41,7 @@ namespace GKutt.Pages
             }
             catch (KuttException kex)
             {
-                await MessageBox.ShowAsync(kex.Message, "Couldn't create a shortened link!", MessageBoxButton.OK,
+                await MessageBox.ShowAsync(kex.Message, "Couldn't kutt the link!", MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
         }

@@ -22,7 +22,7 @@
             <ImageBrush x:Key="NavigationViewTopPaneBackground" Stretch="UniformToFill" ImageSource="pack://application:,,,/Static/ribbon.png"/>
         </ui:NavigationView.Resources>
         <ui:NavigationView.MenuItems>
-            <ui:NavigationViewItem IsSelected="True" FontWeight="Medium" Icon="Cut" Content="Kutt an URL"
+            <ui:NavigationViewItem IsSelected="True" FontWeight="Medium" Icon="Cut" Content="Kutt a URL"
                                    Tag="{x:Type pages:PageShortenLink}" />
             <ui:NavigationViewItem Content="Manage links" Icon="Link" FontWeight="Medium"
                                    Tag="{x:Type pages:PageManageLinks}" />

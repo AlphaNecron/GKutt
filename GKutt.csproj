@@ -61,20 +61,24 @@
         <Compile Include="Dialogs\DialogAbout.xaml.cs">
           <DependentUpon>DialogAbout.xaml</DependentUpon>
         </Compile>
+        <Compile Include="Dialogs\DialogUpdateLink.xaml.cs">
+          <DependentUpon>DialogUpdateLink.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Dialogs\DialogSettings.xaml.cs">
           <DependentUpon>DialogSettings.xaml</DependentUpon>
         </Compile>
         <Compile Include="Events\ActionClickedEventArgs.cs" />
         <Compile Include="Helper.cs" />
-        <Compile Include="Pages\PageCreate.xaml.cs">
-          <DependentUpon>PageCreate.xaml</DependentUpon>
+        <Compile Include="Pages\PageShortenLink.xaml.cs">
+          <DependentUpon>PageShortenLink.xaml</DependentUpon>
         </Compile>
-        <Compile Include="Pages\PageManageUrl.xaml.cs">
-          <DependentUpon>PageManageUrl.xaml</DependentUpon>
+        <Compile Include="Pages\PageManageLinks.xaml.cs">
+          <DependentUpon>PageManageLinks.xaml</DependentUpon>
         </Compile>
         <Page Include="Controls\LinkActions.xaml" />
         <Page Include="Controls\LoadingOverlay.xaml" />
         <Page Include="Dialogs\DialogAbout.xaml" />
+        <Page Include="Dialogs\DialogUpdateLink.xaml" />
         <Page Include="Dialogs\DialogSettings.xaml" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -88,8 +92,8 @@
             <DependentUpon>MainWindow.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
-        <Page Include="Pages\PageCreate.xaml" />
-        <Page Include="Pages\PageManageUrl.xaml" />
+        <Page Include="Pages\PageShortenLink.xaml" />
+        <Page Include="Pages\PageManageLinks.xaml" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs">

@@ -1,41 +1,25 @@
 ﻿using System.Windows;
 using GKutt.Events;
+using Kutt.NET.Links;
 using ModernWpf;
 
 namespace GKutt.Controls
 {
     public partial class LinkActions
     {
-        public static readonly DependencyProperty UuidProperty =
+        public static readonly DependencyProperty LinkProperty =
             DependencyProperty.Register(
-                "Uuid", typeof(string),
-                typeof(LinkActions),
-                new PropertyMetadata("")
-            );
-
-        public static readonly DependencyProperty ShortUrlProperty =
-            DependencyProperty.Register(
-                "ShortUrl",
-                typeof(string),
-                typeof(LinkActions),
-                new PropertyMetadata("")
-            );
-
+                "Link", typeof(Link),
+                typeof(LinkActions));
         public LinkActions()
         {
             InitializeComponent();
         }
 
-        public string Uuid
+        public Link Link
         {
-            get => (string) GetValue(UuidProperty);
-            set => SetValue(UuidProperty, value);
-        }
-
-        public string ShortUrl
-        {
-            get => (string) GetValue(ShortUrlProperty);
-            set => SetValue(ShortUrlProperty, value);
+            get => (Link) GetValue(LinkProperty);
+            set => SetValue(LinkProperty, value);
         }
 
         private void ShowQrCode(object sender, RoutedEventArgs e)
@@ -43,7 +27,7 @@ namespace GKutt.Controls
             ActionClicked?.Invoke(this, new ActionClickedEventArgs
             {
                 ActionType = ActionType.Qr,
-                Data = ShortUrl
+                Data = Link.ShortUrl
             });
         }
 
@@ -52,19 +36,19 @@ namespace GKutt.Controls
             ActionClicked?.Invoke(this, new ActionClickedEventArgs
             {
                 ActionType = ActionType.Delete,
-                Data = Uuid
+                Data = Link.Uuid
             });
         }
 
         public event TypedEventHandler<object, ActionClickedEventArgs> ActionClicked;
 
-
-        private void EditLink(object sender, RoutedEventArgs e)
+    
+        private void UpdateLink(object sender, RoutedEventArgs e)
         {
             ActionClicked?.Invoke(this, new ActionClickedEventArgs
             {
                 ActionType = ActionType.Edit,
-                Data = Uuid
+                Data = Link
             });
         }
     }

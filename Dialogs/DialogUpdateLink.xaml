@@ -1,0 +1,18 @@
+﻿<ui:ContentDialog x:Class="GKutt.Dialogs.DialogUpdateLink"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="http://schemas.modernwpf.com/2019"
+             xmlns:h="clr-namespace:GKutt"
+             PrimaryButtonText="Update"
+             PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             mc:Ignorable="d">
+    <ui:SimpleStackPanel Spacing="4">
+    <TextBox ui:ControlHelper.Header="Target (required)" Text="{Binding Target,Mode=TwoWay}" x:Name="TbTarget"/>
+    <TextBox ui:ControlHelper.Header="Slug (required)" Text="{Binding Slug,Mode=TwoWay}" x:Name="TbSlug"/>
+    <TextBox ui:ControlHelper.Header="Description" Text="{Binding Description,Mode=TwoWay}" x:Name="TbDesc"/>
+    <TextBox ui:ControlHelper.Header="Expiration (1d, 1h, 1m)" ui:ControlHelper.PlaceholderText="Leave blank for no expiration, must be higher than 1m" x:Name="TbExp"/>
+    </ui:SimpleStackPanel>
+</ui:ContentDialog>

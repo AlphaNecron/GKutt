@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using GKutt.Dialogs;
 using GKutt.Events;
 using Kutt.NET;
 using Kutt.NET.Links;
@@ -15,9 +17,9 @@ using MessageBox = ModernWpf.MessageBox;
 namespace GKutt.Pages
 {
     [AddINotifyPropertyChangedInterface]
-    public partial class PageManageUrl
+    public partial class PageManageLinks
     {
-        public PageManageUrl()
+        public PageManageLinks()
         {
             InitializeComponent();
             var view = (CollectionView) CollectionViewSource.GetDefaultView(LvLinks.ItemsSource);
@@ -96,10 +98,31 @@ namespace GKutt.Pages
                     DeleteLink(e.Data.ToString());
                     break;
                 case ActionType.Edit:
+                    var dul = new DialogUpdateLink(e.Data as Link);
+                    EditLink(e.Data as Link);
                     break;
                 case ActionType.Qr:
                     ShowQr(e.Data.ToString());
                     break;
+            }
+        }
+
+        private async void EditLink(Link link)
+        {
+            var dialog = new DialogUpdateLink(link);
+            var result = await dialog.ShowAsync();
+            if (result != ContentDialogResult.Primary) return;
+            try
+            {
+                var reg = new Regex(@"^[1-9]\d*([m]|[h]|[d])$");
+                var exp = dialog.TbExp.Text;
+                var newLink = await App.Kutt.UpdateLinkAsync(dialog.Uuid, dialog.Target, dialog.Slug, reg.IsMatch(exp) ? exp : "", dialog.Description);
+                if (!string.IsNullOrWhiteSpace(newLink.ShortUrl)) 
+                    Refresh();
+            }
+            catch (Exception e)
+            {
+                await MessageBox.ShowAsync($"Couldn't update the link, please try again!\n{e.Message}");
             }
         }
 

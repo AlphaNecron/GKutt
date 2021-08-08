@@ -12,9 +12,9 @@
         <Button ToolTip="Show QR code" Click="ShowQrCode" ui:ControlHelper.CornerRadius="2">
             <ui:FontIcon Glyph="&#xED14;" />
         </Button>
-        <!--<Button ToolTip="Edit" Click="EditLink" ui:ControlHelper.CornerRadius="2">
+        <Button ToolTip="Update" Click="UpdateLink" ui:ControlHelper.CornerRadius="2">
             <ui:FontIcon Glyph="&#xE70F;"/>
-        </Button>-->
+        </Button>
         <ui:SimpleStackPanel.Resources>
             <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
                 <Setter Property="Background" Value="Transparent" />

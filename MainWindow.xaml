@@ -22,10 +22,10 @@
             <ImageBrush x:Key="NavigationViewTopPaneBackground" Stretch="UniformToFill" ImageSource="pack://application:,,,/Static/ribbon.png"/>
         </ui:NavigationView.Resources>
         <ui:NavigationView.MenuItems>
-            <ui:NavigationViewItem IsSelected="True" FontWeight="Medium" Icon="Add" Content="Shorten an URL"
-                                   Tag="{x:Type pages:PageCreate}" />
-            <ui:NavigationViewItem Content="Manage URLs" Icon="AllApps" FontWeight="Medium"
-                                   Tag="{x:Type pages:PageManageUrl}" />
+            <ui:NavigationViewItem IsSelected="True" FontWeight="Medium" Icon="Cut" Content="Kutt an URL"
+                                   Tag="{x:Type pages:PageShortenLink}" />
+            <ui:NavigationViewItem Content="Manage links" Icon="Link" FontWeight="Medium"
+                                   Tag="{x:Type pages:PageManageLinks}" />
         </ui:NavigationView.MenuItems>
         <ui:NavigationView.PaneFooter>
             <StackPanel Orientation="Horizontal" Margin="2,0" Button.Click="OpenDialog">
@@ -38,11 +38,11 @@
                 <Button Background="Transparent"
                         Visibility="{Binding SourcePageType, ElementName=RootFrame, 
                 Converter={x:Static local:PageTypeMatcher.Instance}, 
-                ConverterParameter={x:Type pages:PageManageUrl}}"
+                ConverterParameter={x:Type pages:PageManageLinks}}"
                         Click="RefreshList" ToolTip="Refresh list">
                     <ui:FontIcon Glyph="&#xE72C;" />
                 </Button>
-                <Button Background="Transparent" ToolTip="About GKutt" Tag="{x:Type dialogs:DialogAbout}">
+                <Button Background="Transparent" ToolTip="Info" Tag="{x:Type dialogs:DialogAbout}">
                     <ui:FontIcon Glyph="&#xE946;" />
                 </Button>
                 <Button Background="Transparent" ToolTip="Settings" Tag="{x:Type dialogs:DialogSettings}">
@@ -50,6 +50,6 @@
                 </Button>
             </StackPanel>
         </ui:NavigationView.PaneFooter>
-        <ui:Frame x:Name="RootFrame" Source="Pages/PageCreate.xaml" Background="{StaticResource BackgroundImage}" />
+        <ui:Frame x:Name="RootFrame" Source="Pages/PageShortenLink.xaml" Background="{StaticResource BackgroundImage}" />
     </ui:NavigationView>
 </Window>

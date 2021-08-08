@@ -1,4 +1,4 @@
-﻿<ui:Page x:Class="GKutt.Pages.PageCreate"
+﻿<ui:Page x:Class="GKutt.Pages.PageShortenLink"
          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -8,8 +8,7 @@
          DataContext="{Binding RelativeSource={RelativeSource Self}}"
          mc:Ignorable="d"
          Loaded="OnLoad"
-         Margin="6"
-         Title="PageCreate">
+         Margin="6">
     <Grid>
         <StackPanel Margin="4,8">
             <TextBox ui:ControlHelper.PlaceholderText="Long URL" x:Name="TbTarget" />
@@ -38,8 +37,8 @@
                 IsEnabled="{Binding Text, ElementName=TbTarget, Converter={x:Static local:UrlCheck.Instance}}"
                 Margin="6" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <ui:SimpleStackPanel Spacing="6" Orientation="Horizontal">
-                <ui:FontIcon Glyph="&#xE710;" FontSize="14" />
-                <TextBlock Text="Create" />
+                <ui:FontIcon Glyph="&#xE8C6;" FontSize="14" />
+                <TextBlock Text="Kutt"/>
             </ui:SimpleStackPanel>
         </Button>
     </Grid>

@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Data;
-using System.Windows.Input;
 
 namespace GKutt
 {
     [ValueConversion(typeof(bool), typeof(bool))]
     public class ReverseBoolean : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return !(bool) value;
-        }
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) 
+            => !(bool) value;
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return !(bool) value;
-        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) 
+            => !(bool) value;
     }
 
     [ValueConversion(typeof(string), typeof(Uri))]
@@ -43,23 +39,6 @@ namespace GKutt
         {
             throw new NotImplementedException();
         }
-    }
-
-    public static class Commands
-    {
-        public static readonly RoutedCommand NextPage = new("NextPage", typeof(Commands),
-            new InputGestureCollection
-            {
-                new KeyGesture(Key.Right)
-            });
-
-        public static readonly RoutedCommand PrevPage = new("PrevPage", typeof(Commands),
-            new InputGestureCollection
-            {
-                new KeyGesture(Key.Left)
-            });
-
-        public static readonly RoutedCommand OpenLink = new("OpenLink", typeof(Commands));
     }
 
     [ValueConversion(typeof(string), typeof(bool))]
@@ -90,12 +69,8 @@ namespace GKutt
     {
         public static PageTypeMatcher Instance => new();
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var target = parameter as Type;
-            var current = value as Type;
-            return BoolToVisibility(current == target);
-        }
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) 
+            => BoolToVisibility(value as Type == parameter as Type);
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -113,12 +88,35 @@ namespace GKutt
     {
         public static BooleanToYesNo Instance => new();
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return (bool) value ? "Yes" : "No";
-        }
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) 
+            => (bool) value! ? "Yes" : "No";
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    
+    [ValueConversion(typeof(string), typeof(bool))]
+    public class EmptyStringChecker : IValueConverter
+    {
+        public static EmptyStringChecker Instance => new();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            => parameter as string == "visibility" ? string.IsNullOrWhiteSpace((string) value) ? Visibility.Hidden : Visibility.Visible : string.IsNullOrWhiteSpace((string) value);
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class MultibindValidator : IMultiValueConverter
+    {
+        public static MultibindValidator Instance => new();
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) 
+            => values.Cast<bool>().All(x => x);
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,4 @@
-﻿<ui:Page x:Class="GKutt.Pages.PageManageUrl"
+﻿<ui:Page x:Class="GKutt.Pages.PageManageLinks"
          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,8 +9,7 @@
          xmlns:controls="clr-namespace:GKutt.Controls"
          DataContext="{Binding RelativeSource={RelativeSource Self}}"
          mc:Ignorable="d"
-         Loaded="Refresh"
-         Title="PageManageUrl">
+         Loaded="Refresh">
     <Grid>
         <controls:LoadingOverlay x:Name="Overlay"
                                  Width="Auto" Grid.ZIndex="100" Height="Auto" />
@@ -25,7 +24,8 @@
                                 <DataTemplate DataType="kl:Link">
                                     <ui:SimpleStackPanel Orientation="Horizontal" Spacing="4">
                                         <TextBlock Text="{Binding LongUrl}" />
-                                        <Button Width="28" Height="24" Tag="{Binding LongUrl}" Click="CopyToClipboard"
+                                        <Button Visibility="{Binding LongUrl, Converter={x:Static local:EmptyStringChecker.Instance}, ConverterParameter=visibility}"
+                                                Width="28" Height="24" Tag="{Binding LongUrl}" Click="CopyToClipboard"
                                                 Background="Transparent">
                                             <ui:FontIcon Glyph="&#xF0E3;" FontSize="11" />
                                         </Button>
@@ -38,7 +38,9 @@
                                 <DataTemplate DataType="kl:Link">
                                     <ui:SimpleStackPanel Orientation="Horizontal" Spacing="4">
                                         <TextBlock Text="{Binding ShortUrl}" />
-                                        <Button Width="28" Height="24" Tag="{Binding ShortUrl}" Click="CopyToClipboard"
+                                        <Button Width="28" Height="24"
+                                                Visibility="{Binding ShortUrl, Converter={x:Static local:EmptyStringChecker.Instance}, ConverterParameter=visibility}"
+                                                Tag="{Binding ShortUrl}" Click="CopyToClipboard"
                                                 Background="Transparent">
                                             <ui:FontIcon Glyph="&#xF0E3;" FontSize="11" />
                                         </Button>
@@ -51,7 +53,8 @@
                                 <DataTemplate DataType="kl:Link">
                                     <ui:SimpleStackPanel Orientation="Horizontal" Spacing="4">
                                         <TextBlock Text="{Binding Description}" />
-                                        <Button Width="28" Height="24" Tag="{Binding Description}"
+                                        <Button Visibility="{Binding Description, Converter={x:Static local:EmptyStringChecker.Instance}, ConverterParameter=visibility}"
+                                                Width="28" Height="24" Tag="{Binding Description}"
                                                 Click="CopyToClipboard" Background="Transparent">
                                             <ui:FontIcon Glyph="&#xF0E3;" FontSize="11" />
                                         </Button>
@@ -67,8 +70,7 @@
                         <GridViewColumn Header="Actions">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate DataType="kl:Link">
-                                    <controls:LinkActions ActionClicked="HandleActions" Uuid="{Binding Uuid}"
-                                                          ShortUrl="{Binding ShortUrl}" />
+                                    <controls:LinkActions ActionClicked="HandleActions" Link="{Binding .}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

@@ -7,9 +7,9 @@ using MessageBox = ModernWpf.MessageBox;
 
 namespace GKutt.Pages
 {
-    public partial class PageCreate
+    public partial class PageShortenLink
     {
-        public PageCreate()
+        public PageShortenLink()
         {
             InitializeComponent();
         }
@@ -38,8 +38,8 @@ namespace GKutt.Pages
                 var desc = TbDesc.Text;
                 var minutes = TbExpiration.IsEnabled ? (int) Math.Ceiling(TbExpiration.Value) + "m" : "";
                 var link = await App.Kutt.CreateLinkAsync(target, domain, desc, minutes, slug, password: password);
-                MessageBox.Show("Copied the shortened link to your clipboard!");
                 Clipboard.SetText(link.ShortUrl);
+                await MessageBox.ShowAsync("Copied the shortened link to your clipboard!");
             }
             catch (KuttException kex)
             {

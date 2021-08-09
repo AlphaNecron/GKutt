@@ -58,8 +58,8 @@
         <Compile Include="Controls\LoadingOverlay.xaml.cs">
           <DependentUpon>LoadingOverlay.xaml</DependentUpon>
         </Compile>
-        <Compile Include="Dialogs\DialogAbout.xaml.cs">
-          <DependentUpon>DialogAbout.xaml</DependentUpon>
+        <Compile Include="Dialogs\DialogVersion.xaml.cs">
+          <DependentUpon>DialogVersion.xaml</DependentUpon>
         </Compile>
         <Compile Include="Dialogs\DialogUpdateLink.xaml.cs">
           <DependentUpon>DialogUpdateLink.xaml</DependentUpon>
@@ -72,12 +72,12 @@
         <Compile Include="Pages\PageShortenLink.xaml.cs">
           <DependentUpon>PageShortenLink.xaml</DependentUpon>
         </Compile>
-        <Compile Include="Pages\PageManageLinks.xaml.cs">
-          <DependentUpon>PageManageLinks.xaml</DependentUpon>
+        <Compile Include="Pages\PageManageLink.xaml.cs">
+          <DependentUpon>PageManageLink.xaml</DependentUpon>
         </Compile>
         <Page Include="Controls\LinkActions.xaml" />
         <Page Include="Controls\LoadingOverlay.xaml" />
-        <Page Include="Dialogs\DialogAbout.xaml" />
+        <Page Include="Dialogs\DialogVersion.xaml" />
         <Page Include="Dialogs\DialogUpdateLink.xaml" />
         <Page Include="Dialogs\DialogSettings.xaml" />
         <Page Include="MainWindow.xaml">
@@ -93,7 +93,7 @@
             <SubType>Code</SubType>
         </Compile>
         <Page Include="Pages\PageShortenLink.xaml" />
-        <Page Include="Pages\PageManageLinks.xaml" />
+        <Page Include="Pages\PageManageLink.xaml" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs">

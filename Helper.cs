@@ -5,6 +5,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Data;
+using static System.Convert;
+using static System.Text.Encoding;
+
 
 namespace GKutt
 {
@@ -97,7 +100,7 @@ namespace GKutt
         }
     }
     
-    [ValueConversion(typeof(string), typeof(bool))]
+    
     public class EmptyStringChecker : IValueConverter
     {
         public static EmptyStringChecker Instance => new();
@@ -110,20 +113,14 @@ namespace GKutt
         }
     }
 
-    public class MultibindValidator : IMultiValueConverter
-    {
-        public static MultibindValidator Instance => new();
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) 
-            => values.Cast<bool>().All(x => x);
-
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public static class Helper
     {
+        internal static string Encrypt(string text) 
+            => ToBase64String(UTF8.GetBytes(text));
+
+        internal static string Decrypt(string encrypted) 
+            => UTF8.GetString(FromBase64String(encrypted));
+
         public static string HashEmail(string email)
         {
             var e = email.Trim().ToLower();

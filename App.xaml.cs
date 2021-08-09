@@ -3,9 +3,6 @@ using System.IO;
 using Kutt.NET;
 using ModernWpf;
 using Newtonsoft.Json;
-using static System.Convert;
-using static System.Text.Encoding;
-
 namespace GKutt
 {
     /// <summary>
@@ -19,16 +16,6 @@ namespace GKutt
         private static readonly string ConfigFile =
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "gkutt.conf");
 
-        private static string Encrypt(string text)
-        {
-            return ToBase64String(UTF8.GetBytes(text));
-        }
-
-        private static string Decrypt(string encrypted)
-        {
-            return UTF8.GetString(FromBase64String(encrypted));
-        }
-
         public static string LoadSettings()
         {
             if (!File.Exists(ConfigFile)) return null;
@@ -37,7 +24,7 @@ namespace GKutt
             try
             {
                 var deserialized = JsonConvert.DeserializeAnonymousType(raw, def);
-                ApiKey = Decrypt(deserialized?.apiKey);
+                ApiKey = Helper.Decrypt(deserialized?.apiKey);
                 Kutt = new KuttApi(ApiKey);
                 return ApiKey;
             }
@@ -51,7 +38,7 @@ namespace GKutt
 
         public static void SaveSettings(string key)
         {
-            var apiKey = Encrypt(key);
+            var apiKey = Helper.Encrypt(key);
             var config = new
             {
                 apiKey

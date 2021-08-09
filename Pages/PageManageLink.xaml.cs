@@ -17,9 +17,9 @@ using MessageBox = ModernWpf.MessageBox;
 namespace GKutt.Pages
 {
     [AddINotifyPropertyChangedInterface]
-    public partial class PageManageLinks
+    public partial class PageManageLink
     {
-        public PageManageLinks()
+        public PageManageLink()
         {
             InitializeComponent();
             var view = (CollectionView) CollectionViewSource.GetDefaultView(LvLinks.ItemsSource);
@@ -34,8 +34,8 @@ namespace GKutt.Pages
             if (string.IsNullOrEmpty(SbQuery.Text)) return true;
 
             var link = item as Link;
-            return link.LongUrl.IndexOf(SbQuery.Text, StringComparison.OrdinalIgnoreCase) >= 0
-                   || link.Address.IndexOf(SbQuery.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+            return link?.LongUrl.IndexOf(SbQuery.Text, StringComparison.OrdinalIgnoreCase) >= 0
+                   || link?.Address.IndexOf(SbQuery.Text, StringComparison.OrdinalIgnoreCase) >= 0;
         }
 
         internal async void Refresh(object sender = null, RoutedEventArgs e = null)

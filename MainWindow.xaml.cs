@@ -52,7 +52,7 @@ namespace GKutt
         private void RefreshList(object sender, RoutedEventArgs e)
         {
             var content = RootFrame.Content;
-            if (content is PageManageLinks page) page.Refresh();
+            if (content is PageManageLink page) page.Refresh();
         }
 
         private async void OnLoad(object sender, RoutedEventArgs e)

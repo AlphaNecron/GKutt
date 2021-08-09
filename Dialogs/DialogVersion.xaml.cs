@@ -2,9 +2,9 @@
 
 namespace GKutt.Dialogs
 {
-    public partial class DialogAbout
+    public partial class DialogVersion
     {
-        public DialogAbout()
+        public DialogVersion()
         {
             InitializeComponent();
         }

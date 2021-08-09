@@ -13,8 +13,6 @@ jobs:
            fetch-depth: 0
         - name: Setup MSBuild
           uses: microsoft/setup-msbuild@v1.0.2
-        - name: Download NuGet
-          run: curl https://dist.nuget.org/win-x86-commandline/v5.10.0/nuget.exe -O
         - name: Restore NuGet
           run: nuget restore GKutt.sln
         - name: Run MSBuild
